@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bubu Love Card</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(180deg,#ffccd5,#ffe5ec);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+/* CARD */
+.card{
+    width:min(110vw,360px);
+    background:#fff;
+    border-radius:30px;
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+    text-align:center;
+    padding:30px 20px 40px;
+    position:relative;
+    z-index:2;
+}
+
+.card h2{
+    color:#ff4d6d;
+    margin-bottom:5px;
+}
+
+.card p{
+    color:#666;
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+/* BUBU */
+.bubu{
+    animation:bounce 3s ease-in-out infinite;
+    transform-origin:center;
+}
+
+/* Head */
+.head{
+    width:140px;
+    height:130px;
+    background:#ffe6ea;
+    border-radius:50%;
+    margin:auto;
+    position:relative;
+}
+
+.eye{
+    width:14px;
+    height:14px;
+    background:#000;
+    border-radius:50%;
+    position:absolute;
+    top:45px;
+    animation:blink 4s infinite;
+}
+
+.eye.left{ left:40px; }
+.eye.right{ right:40px; }
+
+.smile{
+    width:30px;
+    height:15px;
+    border-bottom:4px solid #ff4d6d;
+    border-radius:0 0 30px 30px;
+    position:absolute;
+    bottom:35px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+/* Body */
+.body{
+    width:120px;
+    height:150px;
+    background:lightblue;
+    border-radius:60px;
+    margin:-20px auto 0;
+    position:relative;
+    animation:breathe 2.5s infinite;
+}
+
+/* Arms */
+.arm{
+    width:40px;
+    height:80px;
+    background:#ffd6e0;
+    border-radius:40px;
+    position:absolute;
+    top:30px;
+}
+
+.arm.left{
+    left:-25px;
+    transform:rotate(-15deg);
+}
+.arm.right{
+    right:-25px;
+    transform:rotate(15deg);
+}
+
+/* Legs */
+.leg{
+    width:35px;
+    height:50px;
+    background:#ffb3c6;
+    border-radius:20px;
+    position:absolute;
+    bottom:-45px;
+}
+
+.leg.left{ left:25px; }
+.leg.right{ right:25px; }
+
+/* HEARTS */
+.heart{
+    position:absolute;
+    font-size:20px;
+    animation:float linear infinite;
+    opacity:.8;
+}
+
+/* ANIMATIONS */
+@keyframes bounce{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-12px); }
+}
+
+@keyframes breathe{
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.05); }
+}
+
+@keyframes blink{
+    0%,95%,100%{ transform:scaleY(1); }
+    97%{ transform:scaleY(0.1); }
+}
+
+@keyframes float{
+    0%{ transform:translateY(0); opacity:0; }
+    10%{ opacity:1; }
+    100%{ transform:translateY(-600px); opacity:0; }
+}
+
+/* RESPONSIVE */
+@media(max-width:480px){
+    .bubu{ transform:scale(.85); }
+}
+
+@media(max-width:360px){
+    .bubu{ transform:scale(.75); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>Hi, I am Roshan 💖</h2>
+    <p>✨ Wish You Happy New Year, This 2026 year gives you most prestigious gift 🎁</p>
+
+    <div class="bubu">
+        <div class="head">
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="smile"></div>
+        </div>
+
+        <div class="body">
+            <div class="arm left"></div>
+            <div class="arm right"></div>
+            <div class="leg left"></div>
+            <div class="leg right"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+function createHeart(){
+    const heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.bottom="-20px";
+    heart.style.animationDuration=(4+Math.random()*3)+"s";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>heart.remove(),7000);
+}
+
+setInterval(createHeart,400);
+</script>
+
+</body>
+</html>
